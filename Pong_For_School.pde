@@ -1,6 +1,6 @@
 int x, y, w, h, speedX, speedY;
-int paddleXL, paddleYL, paddleW, paddleH, paddleS;
-int paddleXR, paddleYR;
+int paddleXL, paddleYL, paddleW, paddleH, paddleS, gameover,timer, mill, timerReset;
+int paddleXR, paddleYR, ballColor;
 boolean upL, downL;
 boolean upR, downR;
 
@@ -21,6 +21,8 @@ void setup() {
   h = 25;
   speedX = 3;
   speedY = 2;
+  timerReset = 0;
+  timer = mill-timerReset;
 
   textSize(25);
   textAlign(CENTER, CENTER);
@@ -39,18 +41,20 @@ void setup() {
 
 void draw() {
   background(58, 179, 222);
-
+ mill = millis();
   drawCircle();
   moveCircle();
   bounceOff();
 
   drawPaddles();
+  timer();
   movePaddle();
   restrictPaddle();
   contactPaddle();
   scores();
   gameOver();
   PaddleAI();
+  ballChange();
 }
 
 void drawPaddles() {
@@ -107,7 +111,7 @@ void contactPaddle() {
 }
 
 void drawCircle() {
-  fill(255);
+  fill(ballColor);
   ellipse(x, y, w, h);
 }
 
@@ -150,7 +154,7 @@ void gameOver() {
 }
 
 void gameOverPage(String text, color c) {
-  
+  gameover = 1;
   speedX = 0;
   speedY = 0;
   
@@ -165,6 +169,9 @@ void gameOverPage(String text, color c) {
     scoreL = 0;
     speedX = 3;
     speedY = 2;
+    gameover = 0;
+    timerReset = mill;
+    timer = mill-timerReset;
   }
   
 }
@@ -204,4 +211,18 @@ void PaddleAI() {
   } else {
      paddleYR = y;
   }
+}
+void ballChange() {
+  if(speedX < 0) {
+      ballColor = 0;
+  }
+    else 
+  ballColor = 255;
+}
+void timer() {
+  fill(255);
+  textAlign(CENTER);
+  text(mill/1000, width/2, 40);
+  println(mill);
+   
 }
