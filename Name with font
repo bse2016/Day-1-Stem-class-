@@ -1,0 +1,18 @@
+PFont font1, font2;
+                      
+void setup() {
+size(400, 400);
+  
+  font1 = createFont("Serif-48", 48); 
+  font2 = createFont("SansSerif-48", 48); 
+}
+
+void draw() {
+  fill(0, 200, 159);
+  textFont(font1);
+  text("Bryce", 10, 100);
+  fill(240, 200, 70);
+  textFont(font2);
+  text("Bryce", 10, 200);
+  
+}
