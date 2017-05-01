@@ -39,7 +39,7 @@ void functionBar() {
   
   fill(#0A35FF);
   rect(15, 40, 72, 40); //Button Rotate
-  fill(#989696);
+  fill(#E80707);
   rect(15, 100, 72, 40); //Grey Color
   fill(10, 100, 200);
   rect(15, 160, 72, 40); //blue filter
@@ -106,9 +106,9 @@ void filterPic() {
     fliterColor3 = 244;
   }
   if(filter == 1) {
-    fliterColor1 = 152;
-    fliterColor2 = 152;
-    fliterColor3 = 152;
+    fliterColor1 = 232;
+    fliterColor2 = 7;
+    fliterColor3 = 7;
   } 
   if(filter == 2) {
     fliterColor1 = 10;
